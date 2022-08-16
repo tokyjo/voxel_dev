@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+body,
+button {
+font-family: "Inter", sans-serif;
+}
+
+:root{
+    --offcanvas-width: 270px;
+    --topNavbarHeight: 55px;
+} 
+.offcanvas.sidebar-nav{
+    position: fixed;
+    height: 100%;
+    top: var(--topNavbarHeight);
+}
+
+.offcanvas.offcanvas-start{
+    width: var(--offcanvas-width);
+}
+
+.nav-link.sidebar-link{
+    display: flex;
+    align-items: center;
+}
+
+.nav-link.sidebar-link.right-icon{
+    display: inline-flex;
+}
+
+.nav-link.sidebar-link[aria-expanded="true"] .right-icon{
+    transform: rotate(180deg);
+    transition:all ease 0.25s;
+}
+
+
+
+@media (min-width: 992px){
+    body{
+        overflow: auto !important;
+    }
+    .offcanvas-backdrop::before{
+        display: none;
+    }
+    
+    main{
+        margin-left: var(--offcanvas-width);
+    }
+    
+    .offcanvas.offcanvas-start{
+        transform: none;
+        visibility: visible ;
+        top:var(--topNavbarHeight);
+    }
+
+    .offcanvas.sidebar-nav{
+        height : calc(100% - var(--topNavbarHeight));
+    }
+}
+
+.stylebreadcrumb{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.override-body{
+    display: inline-flex;
+    
+}

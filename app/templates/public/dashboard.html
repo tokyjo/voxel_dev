@@ -1,0 +1,207 @@
+{%extends "public/public_template.html"%}
+
+{%block content%}
+<div class="container-fluid">
+  <div class="row">
+
+
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+          <div class="position-sticky ">
+              <ul class="nav flex-column mx-auto">
+                  <li class="nav-item ">
+                    <a class="nav-link active" aria-current="page" href="/dashboard">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                      <span class="ml-2">Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                      <span class="ml-2">Charts</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                      <span class="ml-2">Devices</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                      <span class="ml-2">Archives</span>
+                    </a>
+                  </li>
+                </ul>
+          </div>
+      </nav>
+
+
+
+
+
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Overview</li>
+              </ol>
+          </nav>
+          <h2 class="h2">Dashboard</h2>
+          <p>Monitoring console of the voxel laboratory</p>
+          <div class="row my-4">
+              <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <div class="card ">
+                  <h5 class="card-header">Temperature 1</h5>
+                  <div class="row no-gutters">
+                    <div class="col-md-4 mt-2 mb-2">
+                      <img src="{{url_for('static',filename='img/temperature.png')}}" width="80px" height="120px" class="card-img" alt="temperature sensor">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 id="value_temp">ºC</h5>
+                        <p class="card-text" id="date_temp"><small class="text-muted ">Last updated</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                <div class="card">
+                  <h5 class="card-header">Temperature 2</h5>
+                  <div class="row no-gutters">
+                    <div class="col-md-4 mt-2 mb-2">
+                      <img src="{{url_for('static',filename='img/temperature.png')}}" width="80px" height="120px" class="card-img" alt="temperature sensor">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 id="value_temp2">ºC</h5>
+                          <p class="card-text" id="date_temp2"   mall class="text-muted">Last updated</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                  <div class="card">
+                      <h5 class="card-header">Power</h5>
+                      <div class="row no-gutters">
+                        <div class="col-md-4 mt-2 mb-2">
+                          <img src="{{url_for('static',filename='img/sensor.png')}}"width="60px" height="120px" class="card-img" alt="temperature sensor">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 id="value_energy">W</h5>
+                              <p class="card-text" id="date_energy"><small class="text-muted ">Last updated</small></p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                  <div class="card">
+                      <h5 class="card-header">Energy</h5>
+                      <div class="row no-gutters">
+                        <div class="col-md-4 mt-2 mb-2">
+                          <img src=" {{url_for('static',filename='img/sensor.png') }}"width="60px" height="120px" class="card-img" alt="temperature sensor">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 id="value_energy2">W</h5>
+                              <p class="card-text" id="date_energy2"><small class="text-muted date_energy">Last updated</small></p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              
+          </div>
+              <div class="col-12 col-xl-4">
+                  <div class="card">
+                      <h5 class="card-header">Traffic last 6 months</h5>
+                      <div class="card-body">
+                          <div id="traffic-chart"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="card">
+              <span class="description">Camera 1</span>
+              <img src="{{url_for('video_feed')}}" height="auto" class="img-fluid max.width=100%">
+            </div>
+        </div>
+          
+        <footer class="pt-5 d-flex justify-content-between">
+          <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
+          <ul class="nav m-0">
+              <li class="nav-item">
+                <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="#">Terms and conditions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="#">Contact</a>
+              </li>
+            </ul>
+      </footer>
+      </div>
+          
+      </main>
+  </div>
+</div>
+{%endblock%}
+
+
+
+
+
+{%block script%}
+<script>
+    new Chartist.Line('#traffic-chart', {
+        labels: ['January', 'Februrary', 'March', 'April', 'May', 'June'],
+        series: [
+            [23000, 25000, 19000, 34000, 56000, 64000]
+        ]
+        }, {
+        low: 0,
+        showArea: true
+    });
+ </script>
+
+<script>
+  document.getElementById("value_temp").innerHTML;
+  document.getElementById("date_temp").innerHTML;
+  document.getElementById("value_energy").innerHTML;
+  document.getElementById("date_energy").innerHTML;
+</script>
+
+<script>
+  var intervalID = setInterval(update_values,20000);
+  var items= []
+  function update_values(){
+  $.getJSON('/_power',
+  function(data){
+  items= data.result;
+  console.log(data.result);
+
+
+  });
+
+  $.getJSON('/_temperature',
+  function(data){
+
+  items= data.result;
+  console.log(items);
+ 
+
+  });
+  }
+
+</script>
+
+
+
+{%endblock%}
