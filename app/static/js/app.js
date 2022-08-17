@@ -1,74 +1,61 @@
 var intervalID = setInterval(update_values,20000);
-var temp, date, energy; 
-var ctx =document.getElementById("TemperatureChart").getContext("2d");
 
+var temp, date, energy; 
 var EnergyeChart;
 var TemperatureChart;
 
-TemperatureChart =new Chart (ctx, {
-    type: 'line',
-    data :{
-        datasets:[{
-            label: 'time',
-            data:[],
-        },
-        {
-            label: 'temperature',
-            data:[],
-            backgroundColor :[
-                'rgba(102,255,153,1',
-            ],
-            borderColor :[
-                'rgba (255,0,0,1)',
-            ],
-            borderWidth: 1
+var options={
+    scales: {
+        y: {
+            beginAtZero: true
         }
-           
-        ]
-    },
-    // options:{
-    //     scales:{
-    //         yAxes :[{
-    //             ticks :{
-    //                 beginAtZero : true
-    //             }
-    //         }]
-    //     }
-    // }
-});
+    }
+};
 
-var ctx =document.getElementById("EnergyChart").getContext("2d");
-EnergyeChart =new Chart (ctx, {
+var data_temp = {
+    labels: [],
+    datasets: [{
+      label: 'temperatures',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [],
+    }]
+};
+
+var data_energy = {
+    labels: [],
+    datasets: [{
+      label: 'energy',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [],
+    }]
+};
+
+const config1 = {
     type: 'line',
-    data :{
-        datasets:[{
-            label: 'time',
-            data:[],
-        },
-        {
-            label: 'energy',
-            data:[],
-            backgroundColor :[
-                'rgba(102,255,153,1',
-            ],
-            borderColor :[
-                'rgba (255,0,0,1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    // options:{
-    //     scales:{
-    //         yAxes :[{
-    //             ticks :{
-    //                 beginAtZero : true
-    //             }
-    //         }]
-    //     }
-    // }
-});
+    data: data_temp,
+    options: options
+};
+
+const config2 = {
+    type: 'line',
+    data: data_energy,
+    options: options
+};
+
+var ctx1 =document.getElementById("TemperatureChart").getContext("2d");
+TemperatureChart = new Chart(
+    ctx1,
+    config1
+  );
 
 
+var ctx2 =document.getElementById("EnergyChart").getContext("2d");
+EnergyeChart =new Chart(
+    ctx2,
+    config2
+  );
 
 function update_values(){
   
@@ -78,7 +65,10 @@ function update_values(){
     $('#temperature2').text(data["temp"]);
     $('#energy').text(data["power"]);
     $('#power').text(data["power"]);
-    $('#date').text(data["date"]);
+    $('#date1').text(data["date"]);
+    $('#date2').text(data["date"]);
+    $('#date3').text(data["date"]);
+    $('#date4').text(data["date"]);
 
     temp = data.temp;
     date = data.date;
@@ -89,23 +79,14 @@ function update_values(){
     console.log(temp);
   });
 
-  /* update chart*/ 
- 
-  TemperatureChart.data.datasets.forEach(function(dataset){
-    dataset.data.push({
-        x:date,
-        y:temp
-      });
-  });
-
- 
-  EnergyChart.data.datasets.forEach(function(dataset){
-    dataset.data.push({
-        x:date,
-        y:energy
-    });
-  });
-  TemperatureChart.update();
-  EnergyChart.update();
+    addData(TemperatureChart,date,temp);
+    addData(EnergyeChart,date,energy);
 }
 
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}

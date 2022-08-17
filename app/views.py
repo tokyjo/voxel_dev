@@ -10,7 +10,7 @@ from app.camera import Camera
 
 
 #init_sensor
-cam=cv.VideoCapture(-1,cv.CAP_V4L)
+cam=Camera(0)
 
 #for production
 # inst=USBTMC(device="/dev/usbtmc0")
@@ -20,11 +20,21 @@ cam=cv.VideoCapture(-1,cv.CAP_V4L)
 # index=-1
 # sensor = W1ThermSensor()
 
-
-
 @app.route("/")
 def index():
     return render_template("public/index.html")
+
+@app.route("/about")
+def about():
+    return render_template("public/about.html")
+
+@app.route("/tutorial")
+def tutorial():
+    return render_template("public/tutorial.html")
+
+@app.route("/login")
+def login():
+    return render_template("public/login.html")
 
 @app.route("/dashboard")
 def dashboard():
@@ -66,8 +76,16 @@ def gen_frames(id):
             yield(b'--frame\r\n'
             b'Contet-Type : image/jpeg \r\n\r\n'+frame+b'\r\n\r\n')
 
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        yield(b'--frame\r\n'
+        b'Content-Type : image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-
+@app.route('/video_feed_0')
+def video_feed_0():
+    return Response(gen(cam),
+                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
     
     
