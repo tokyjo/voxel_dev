@@ -1,43 +1,45 @@
 {% extends "public/public_template.html" %}
 
 {% block content %}
-<section class="wrapper">
+
     <div class="container">
-        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
-            <div class="logo py-md-5 py-3">
-            <img src="{{url_for('static',filename='/img/voxel.png')}}" class="img-fluid" width="100px" alt="logo">
-            </div>
-            <form class="rounded bg-white shadow py-sm-5 px-sm-5 p-4 "action="" method="post">
-                
-                <div class="text-dark fw-bolder fs-5 mb-3">Login to Voxel</div>
-               <!--Username-->
-                <div class="form-floating mb-3 text-start ">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="{{
-                        request.form.username }}">
-                    <label for="floatingInput">Username</label>
+        <div class="row ">
+            <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
+                <div class="logo py-md-5 py-3">
+                <img src="{{url_for('static',filename='/img/voxel-logo.png')}}" class="img-fluid" width="100px" alt="logo">
                 </div>
-                <!--Username-->
-
-                <!--password-->
-                <div class="form-floating mb-3 text-start">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="{{
-                        request.form.password }}">
-                    <label for="floating Password">Password</label>
-                </div>
-                <!--password-->
-
-                <button type="submit" class="btn submit w-100 my-3" style="background-color: rgba(35, 232, 219, 1);">Login</button>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="notification is-danger">
-                        {{ messages[0] }}
+                <form class="rounded bg-white shadow py-sm-5 px-sm-5 p-4 "action="" method="post">
+                    
+                    <div class="text-dark fw-bolder fs-5 mb-3">Login </div>
+                   <!--Username-->
+                    <div class="form-floating mb-3 text-start ">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="{{
+                            request.form.username }}">
+                        <label for="floatingInput">Username</label>
                     </div>
-                {% endif %}
-                {%endwith%}
-            </form>
+                    <!--Username-->
+    
+                    <!--password-->
+                    <div class="form-floating mb-3 text-start">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="{{
+                            request.form.password }}">
+                        <label for="floating Password">Password</label>
+                    </div>
+                    <!--password-->
+    
+                    <button type="submit" class="btn submit w-100 my-3" style="background-color: rgba(35, 232, 219, 1);">Login</button>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notification is-danger">
+                            {{ messages[0] }}
+                        </div>
+                    {% endif %}
+                    {%endwith%}
+                </form>
+            </div>
         </div>
     </div>
-</section>
+
 
 
 <style>
@@ -55,6 +57,21 @@
 .form-login{
     background-color: rgba(214, 238, 237, 0.995) ;
     border-radius: 10px;
+}
+
+@media (min-width: 1024px){
+    
+    .logo img{
+        width: 250px;
+    }
+
+}
+
+@media (min-width: 2500px){
+
+    .row{
+        margin-top: 250px;
+    }
 }
 </style>
 {% endblock %}
