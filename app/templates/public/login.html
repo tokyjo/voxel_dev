@@ -25,13 +25,6 @@
                     <label for="floating Password">Password</label>
                 </div>
                 <!--password-->
-                
-                <!--checkbox-->
-                <div class=" form-check text-start">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" value="{{request.form.remember}}">
-                    <label class="form-check-label" for="exampleCheck1">Remember</label>
-                </div>
-                <!--checkbox-->
 
                 <button type="submit" class="btn submit w-100 my-3" style="background-color: rgba(35, 232, 219, 1);">Login</button>
                 {% with messages = get_flashed_messages() %}

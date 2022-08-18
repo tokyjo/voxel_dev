@@ -24,7 +24,7 @@ def login():
             flash('Please check your login details and try again')
             return redirect(url_for('auth.login'))
 
-        login_user(user)
+        # login_user(user)
         return redirect(url_for('main.dashboard'))# if pass the check then  have credentials 
 
     return render_template('public/login.html')
