@@ -1,11 +1,33 @@
-from random import randint
-from app import app
-from flask import Flask,Response,render_template,jsonify
+#from app import app
+from . import db
 import cv2 as cv
-#from w1thermsensor import W1ThermSensor
-#from ThorlabsPM100 import ThorlabsPM100,USBTMC
+from random import randint
 from datetime import datetime
 from app.camera import Camera
+#from w1thermsensor import W1ThermSensor
+#from ThorlabsPM100 import ThorlabsPM100,USBTMC
+from flask import Blueprint, Response,render_template,jsonify
+from flask_login import login_required, current_user
+
+main = Blueprint('main', __name__)
+
+@main.route('/')
+def index():
+    return render_template("public/index.html")
+
+@main.route('/profile')
+# @login_required
+def profile():
+    return render_template("public/profile.html")
+
+
+
+
+
+
+
+
+
 
 
 
@@ -20,27 +42,22 @@ cam=Camera(0)
 # index=-1
 # sensor = W1ThermSensor()
 
-@app.route("/")
-def index():
-    return render_template("public/index.html")
 
-@app.route("/about")
+@main.route("/about")
 def about():
     return render_template("public/about.html")
 
-@app.route("/tutorial")
+@main.route("/tutorial")
 def tutorial():
     return render_template("public/tutorial.html")
 
-@app.route("/login")
-def login():
-    return render_template("public/login.html")
 
-@app.route("/dashboard")
+
+@main.route("/dashboard")
 def dashboard():
     return render_template("admin/dashboard.html")
 
-@app.route('/_sensors', methods=['GET'])
+@main.route('/_sensors', methods=['GET'])
 def get_data():
     date =datetime.now().strftime("%H:%M:%S")
    
@@ -59,12 +76,13 @@ def get_data():
     return jsonify(to_json_data)
 
 
-@app.route('/video_feed/<id>/')
+@main.route('/video_feed/<id>/')
 def video_feed(id):
     return Response(gen_frames(id),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def gen_frames(id):
+    cam=Camera(id)
     cam.set(3,480)
     cam.set(4,320)
     cam.set(5,10)
@@ -82,7 +100,7 @@ def gen(camera):
         yield(b'--frame\r\n'
         b'Content-Type : image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-@app.route('/video_feed_0')
+@main.route('/video_feed_0')
 def video_feed_0():
     return Response(gen(cam),
                      mimetype='multipart/x-mixed-replace; boundary=frame')

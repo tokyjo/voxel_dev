@@ -8,44 +8,34 @@
             <img src="{{url_for('static',filename='/img/voxel.png')}}" class="img-fluid" width="100px" alt="logo">
             </div>
             <form class="rounded bg-white shadow py-sm-5 px-sm-5 p-4 "action="" method="post">
+                <div class="text-dark fw-bolder fs-5 mb-3">Sign up to Voxel</div>
                 
-                <div class="text-dark fw-bolder fs-5 mb-3">Login to Voxel</div>
-               <!--Username-->
                 <div class="form-floating mb-3 text-start ">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="{{
                         request.form.username }}">
                     <label for="floatingInput">Username</label>
                 </div>
-                <!--Username-->
 
-                <!--password-->
-                <div class="form-floating mb-3 text-start">
+                <div class="form-floating mb-3 text-start ">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="email" name="email" value="{{
+                        request.form.email}}">
+                    <label for="floatingInput">name@example.com</label>
+                </div>
+
+                <div class="form-floating text-start">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="{{
                         request.form.password }}">
                     <label for="floating Password">Password</label>
                 </div>
-                <!--password-->
-                
-                <!--checkbox-->
-                <div class=" form-check text-start">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" value="{{request.form.remember}}">
-                    <label class="form-check-label" for="exampleCheck1">Remember</label>
-                </div>
-                <!--checkbox-->
 
-                <button type="submit" class="btn submit w-100 my-3" style="background-color: rgba(35, 232, 219, 1);">Login</button>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="notification is-danger">
-                        {{ messages[0] }}
-                    </div>
+                <button type="submit" class="btn submit w-100 my-3" style="background-color: rgba(35, 232, 219, 1);">Sign up</button>
+                {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
                 {% endif %}
-                {%endwith%}
             </form>
         </div>
     </div>
 </section>
-
 
 <style>
     body{
