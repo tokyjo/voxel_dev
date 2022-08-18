@@ -20,17 +20,6 @@ def index():
 def profile():
     return render_template("public/profile.html")
 
-
-
-
-
-
-
-
-
-
-
-
 #init_sensor
 cam=Camera(0)
 
@@ -49,7 +38,7 @@ def about():
 
 @main.route("/tutorial")
 def tutorial():
-    return render_template("public/tutorial.html")
+    return render_template("admin/tutorial.html")
 
 
 
