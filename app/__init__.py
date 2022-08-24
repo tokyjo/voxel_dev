@@ -35,7 +35,8 @@ def create_app():
 
     return app
 
-db.create_all(app=create_app()) # create data_base
+app=create_app()
+db.create_all(app=app) # create data_base
 
 from app import main,auth
 from app import camera

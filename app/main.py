@@ -21,7 +21,7 @@ def profile():
     return render_template("public/profile.html")
 
 #init_sensor
-cam=Camera(0)
+
 
 #for production
 # inst=USBTMC(device="/dev/usbtmc0")
@@ -91,7 +91,14 @@ def gen(camera):
 
 @main.route('/video_feed_0')
 def video_feed_0():
+    cam=Camera(0)
     return Response(gen(cam),
+                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@main.route('/video_feed_1')
+def video_feed_1():
+    cam1=Camera(1)
+    return Response(gen(cam1),
                      mimetype='multipart/x-mixed-replace; boundary=frame')
 
     
