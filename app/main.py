@@ -21,7 +21,7 @@ def profile():
     return render_template("public/profile.html")
 
 #init_sensor
-cam=Camera(0)
+
 
 #for production
 # inst=USBTMC(device="/dev/usbtmc0")
@@ -30,6 +30,7 @@ cam=Camera(0)
 
 # index=-1
 # sensor = W1ThermSensor()
+
 
 
 @main.route("/about")
@@ -64,7 +65,7 @@ def get_data():
     }
     return jsonify(to_json_data)
 
-
+"""
 @main.route('/video_feed/<id>/')
 def video_feed(id):
     return Response(gen_frames(id),
@@ -82,6 +83,8 @@ def gen_frames(id):
             frame=jpeg.tobytes()
             yield(b'--frame\r\n'
             b'Contet-Type : image/jpeg \r\n\r\n'+frame+b'\r\n\r\n')
+"""
+
 
 def gen(camera):
     while True:
@@ -91,6 +94,7 @@ def gen(camera):
 
 @main.route('/video_feed_0')
 def video_feed_0():
+    cam=Camera(0)
     return Response(gen(cam),
                      mimetype='multipart/x-mixed-replace; boundary=frame')
 
