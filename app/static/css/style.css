@@ -3,7 +3,10 @@ body,
 button {
 font-family: "Inter", sans-serif;
 }
-
+html, body {
+    margin:0;
+    height: 100%;
+}
 :root{
     --offcanvas-width: 270px;
     --topNavbarHeight: 55px;
@@ -70,4 +73,80 @@ font-family: "Inter", sans-serif;
 .override-body{
     display: inline-flex;
     
+}
+
+.jumbo{
+
+        /* fallback for old browsers */
+        background: #6a11cb;
+        
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgb(19, 149, 161), rgb(6, 120, 152));
+        
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgb(19, 149, 161), rgb(6, 120, 152));
+    
+}
+.jumbo > .btn {
+    background-color :aliceblue;
+    color: rgb(19, 149, 161);
+}
+
+.footer-main{
+    background-color: #303740;
+    padding-top: 60px;
+}
+
+.address-main > div.col-lg-4{
+    border-bottom: dotted 1px #999;
+
+}
+
+.address-box {
+    padding :10px 0;
+    margin-bottom: 30px;
+}
+
+.add-icon{
+    float:left;
+    display: inline-block;
+    padding: 0px 5px;
+}
+
+.address-box .add-icon{
+    background: #27303b;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+
+.add-content{
+    padding-left:70px;
+}
+
+.add-icon i{
+   font-size:xx-large;
+}
+
+.add-content h5{
+    font-size: 17px;
+    color: #ffffff;
+    padding: 0;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.add-content p{
+    font-size: 13px;
+    color: #999999;
+    font-weight: 300;
+}
+
+.add-content p a{
+    font-size: 14px;
+    color: #999999;
+    word-wrap: break-word;
 }

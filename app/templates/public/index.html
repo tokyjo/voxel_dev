@@ -7,12 +7,115 @@
 <!--nav-->
 {%include "public/nav.html"%}
 
-<!--offcanvas-->
+<!--jumbotron card-->
 
-{%include "public/offcanvas.html"%}
+    <div class="container-fluid jumbo my-5 py-5 text-white text-center" style="height:auto">
+        <span class="py-5">
+            <img src="{{url_for('static',filename='/img/voxel-logo-white-small.png')}}" class="img-fluid" alt="voxel-logo">
+        </span>
+        <p class="lead py-4">Welcome to the monitoring page of Voxel's lab!</p> 
+        <a class="btn " href="/login" role="button">Login</a>
+    </div>
+<!--jumbotron card-->
 
-<!--main content-->
 
+
+<div class="container-fluid my-5">
+    
+    <h1 class="text-center my-5 ">Our project</h1>
+    <p class="lead pb-4 text-center"> The goal for this project was to help the member of the Voxel's lab having an overview of each experimentation in a single console </p> 
+    <!-- grid card-->
+    <div class="row row-cols-1 row-cols-md-4 g-4 row-cols-sm-2 mx-5">
+        <div class="col">
+          <div class="card h-100 ">
+            <img src="{{url_for('static',filename='/img/sensors.jpg')}}" class="card-img-top" alt="sensors">
+            <div class="card-body">
+              <h5 class="card-title">IoT</h5>
+              <p class="card-text">A real-time monitoring of the lab with sensors </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="{{url_for('static',filename='/img/instrument.jpg')}}" class="card-img-top" alt="instrument">
+            <div class="card-body">
+              <h5 class="card-title">Lab Instrument</h5>
+              <p class="card-text"> Acquiring additional data from lab instrument</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="{{url_for('static',filename='/img/camera.jpg')}}" class="card-img-top" alt="camera">
+            <div class="card-body">
+              <h5 class="card-title">Streaming</h5>
+              <p class="card-text">A global view of the experimentation in real time</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+              <img src="{{url_for('static',filename='/img/web.jpg')}}" class="card-img-top"alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Web development</h5>
+                <p class="card-text">A dashboard to display processed data</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    <!-- grid card-->
+</div>
+    
+<!-- Contact-->
+      <div class="footer-main fixed-bottom">
+        <div class="container">
+            <div class="row address-main">
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                                <i class="bi bi-geo-alt"style=" color:rgb(228, 131, 131)"></i>
+                        </div>
+                        <div class="add-content">
+                            <h5>Adress</h5>
+                            <p>Paris,France</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                                <i class="bi bi-envelope-open-fill" style="color:rgb(228, 131, 131);"></i>
+                        </div>
+                        <div class="add-content">
+                            <h5>Email</h5>
+                            <p> <a href="mailto:" style="text-decoration: none;"></a>
+                                ravelonjatoj@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                       
+                                <i class="bi bi-phone"style=" color:rgb(228, 131, 131)"></i>
+                            
+                        </div>
+                        <div class="add-content">
+                            <h5>Phone</h5>
+                            <p>+33612535116</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+<!-- Contact-->
+    
 
 {%endblock%}
 

@@ -13,7 +13,7 @@ def description(frame,text):
     return cv.putText(frame,str(text),(200,320),FONT_HERSHEY_COMPLEX,fontScale=1.0,color=(0,48,73),thickness=2)
 
 class Camera(object):
-    def __init__(self,id=0,resolution=(1920,1280),file_type= ".jpg",photo_name="photo",fps=5):
+    def __init__(self,id,resolution=(1920,1280),file_type= ".jpg",photo_name="photo",fps=5):
         self.vs = cv.VideoCapture(id) # streaming 
         self.file_type = file_type # file type 
         self.photo_name= photo_name  # record of the photo

@@ -98,6 +98,12 @@ def video_feed_0():
     return Response(gen(cam),
                      mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@main.route('/video_feed_1')
+def video_feed_1():
+    cam=Camera(4)
+    return Response(gen(cam),
+                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
     
     
     
