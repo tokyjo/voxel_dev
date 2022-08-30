@@ -1,4 +1,5 @@
 #from app import app
+import random
 from . import db
 import cv2 as cv
 from random import randint
@@ -55,8 +56,8 @@ def get_data():
     # power = float( pmd100.read*(10**6)) 
     # temp= float(sensor.get_temperature())
     # for dev:
-    power= randint(0,10)
-    temp = randint(0,10)
+    power= round (random.uniform(0,100),2)
+    temp = round (random.uniform(0,100),2)
         
     to_json_data= {
         "power": power,

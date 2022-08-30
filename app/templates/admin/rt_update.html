@@ -1,78 +1,102 @@
 <!--Real Time update-->
-<div class="row">
-    <div class="col-md-3 col-lg-3 py-2">
+<div class="row row-cols-xxl-6 row-cols-xl-3 ">
+    <div class="col-md-3 col-xxl-1 py-2">
         <div class="card border-primary mb-3 h-100">
-            <div class="card-header border-primary">Temperature 1</div>
-            <div class="card-body">
+            <div class="card-header border-primary">Temp 1</div>
+            <div class="card-body ">
                 <div class="override-body">
-                    <span class="me-2"><i class="bi bi-thermometer-half" style="font-size: 50px;"></i></span>
+                    <span class="symbol me-2"><i class="bi bi-thermometer-half"></i></span>
                     <p class="card-text mx-auto my-auto">
-                        <span id="temperature1">?</span>°C
+                        <span class ="measure"id="temperature1">?</span>
+                        <span class="unit"> °C</span>
                     </p>
                 </div>
             </div>
             <div class="card-footer border-primary"> 
                 Last update
-                <span id="date1">?</span>
+                <span class ="footer-date" id="date1">?</span>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-lg-3 py-2">
+    <div class="col-md-3 col-xxl-1 py-2">
         <div class="card border-primary mb-3 h-100">
-            <div class="card-header border-primary">Temperature 2</div>
-            <div class="card-body">
+            <div class="card-header border-primary">Temp 2</div>
+            <div class="card-body ">
                 <div class="override-body">
-                    <span class="me-2"><i class="bi bi-thermometer-half" style="font-size: 50px;"></i></span>
+                    <span class="me-2 symbol"><i class="bi bi-thermometer-half" ></i></span>
                     <p class="card-text mx-auto my-auto">
-                        <span id="temperature2">?</span>°C
+                        <span class ="measure"id="temperature2">?</span>
+                        <span class="unit"> °C</span>
                     </p>
                 </div>
             </div>
             <div class="card-footer border-primary"> 
                 Last update
-                <span id="date2">?</span>
+                <span class ="footer-date" id="date2">?</span>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-lg-3 py-2">
+    <div class="col-md-3 col-xxl-1 py-2">
         <div class="card border-warning mb-3 h-100">
             <div class="card-header border-warning">Energy</div>
-            <div class="card-body border-warning">
+            <div class="card-body border-warning"></i>
                 <div class="override-body">
-                    <span class="me-2 mt-2"><img src="{{url_for('static',filename='/img/jauge.png')}}" width="50px" alt="gauge-meter"></i></span>
+                    <span class="me-2 symbol"><i class="bi bi-lightning-charge-fill"></i></span>
                     <p class="card-text mx-auto my-auto"> 
-                        <span id="energy">?</span> uW
+                        <span class ="measure"id="energy">?</span>
+                        <span class="unit"> mJ</span> 
                     </p>
                 </div>
             </div>
-            <div class="card-footer border-primary"> 
+            <div class="card-footer"> 
                 Last update
-                <span id="date3">?</span>
+                <span class ="footer-date"id="date3">?</span>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-lg-3 py-2">
+    <div class="col-md-3 col-xxl-1 py-2">
         <div class="card border-dark mb-3 h-100">
             <div class="card-header border-dark">Power</div>
             <div class="card-body border-dark">
                 <div class="override-body">
-                    <span class="me-2 mt-2">
-                        <img src="{{url_for('static',filename='img/jauge.png')}}" width="50px" alt="gauge-meter">
-                    </span>
+                    <span class="me-2 symbol"><i class="bi bi-lightning-charge-fill"></i></span>
                     <p class="card-text mx-auto my-auto">
-                        <span id="power">?</span> uW
+                        <span class ="measure"id="power">?</span>
+                        <span class="unit"> uW</span> 
                     </p>
                 </div>
             </div>
-            <div class="card-footer border-primary"> 
+            <div class="card-footer"> 
                 Last update
-                <span id="date4">?</span>
+                <span class = "footer-date" id="date4">?</span>
             </div>
         </div>
     </div>
+    <div class="col-md-6 col-sm-12 col-xxl-4 py-2">
+        <div class="card">
+            <div class="card-header">
+                Temperatures
+            </div>
+            <div class=" Chartbox card-body ">
+                <canvas id="TemperatureChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xxl-4 py-2">
+        <div class="card">
+            <div class="card-header">
+                Power
+            </div>
+            <div class=" Chartbox card-body ">
+                <canvas id="EnergyChart" ></canvas>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!--Real Time update-->
 <script>

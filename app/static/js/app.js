@@ -1,11 +1,16 @@
-var intervalID = setInterval(update_values,20000);
+var intervalID = setInterval(update_values,2000);
 
 var temp, date, energy; 
-var EnergyeChart;
+var EnergyChart;
 var TemperatureChart;
 
 var options={
+    maintainAspectRatio:false,
     scales: {
+      x:{
+        min : 0,
+        max :180
+      },
         y: {
             beginAtZero: true
         }
@@ -51,14 +56,19 @@ TemperatureChart = new Chart(
   );
 
 
+
 var ctx2 =document.getElementById("EnergyChart").getContext("2d");
-EnergyeChart =new Chart(
+EnergyChart =new Chart(
     ctx2,
     config2
   );
 
+
+
+
+
 function update_values(){
-  
+  //'http://10.24.0.184/_sensors'
   $.getJSON('/_sensors',
   function(data){
     $('#temperature1').text(data["temp"]);
@@ -80,8 +90,8 @@ function update_values(){
   });
 
     addData(TemperatureChart,date,temp);
-    addData(EnergyeChart,date,energy);
-}
+    addData(EnergyChart,date,energy);
+};
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
@@ -89,4 +99,39 @@ function addData(chart, label, data) {
         dataset.data.push(data);
     });
     chart.update();
-}
+    
+};
+
+function scroller(scroll,chart){
+  console.log(scroll)
+  const datalength = chart.data.labels.length;
+  if(scroll.deltaY > 0){
+    if(chart.config.options.scales.x.max >= datalength ){
+      chart.config.options.scales.x.min = datalength-180;
+      chart.config.options.scales.x.max = datalength;
+    }
+    else{
+      chart.config.options.scales.x.min +=1;
+      chart.config.options.scales.x.max +=1;
+    }
+    
+  }
+  else if (scroll.deltaY < 0){
+    if(chart.config.options.scales.x.min <= 0  ){
+      chart.config.options.scales.x.min =0;
+      chart.config.options.scales.x.max =180;
+    }
+    else{
+      chart.config.options.scales.x.min -=1;
+      chart.config.options.scales.x.max -=1;
+    }
+  }
+  else{
+    //nothing
+  }
+
+};
+
+TemperatureChart.canvas.addEventListener('wheel',(e) =>{
+  scroller(e,TemperatureChart);
+});
