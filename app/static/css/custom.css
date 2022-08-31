@@ -14,7 +14,9 @@ font-family: "Inter", sans-serif;
     top: var(--topNavbarHeight);
 }
 
-
+.offcanvas .offcanvas-body .navbar-dark .navbar-nav .hide {
+    display: none;
+}
 
 
 .offcanvas.offcanvas-start{
@@ -35,6 +37,11 @@ font-family: "Inter", sans-serif;
     transition:all ease 0.25s;
 }
 
+@media (max-width: 992px){
+    .offcanvas .offcanvas-body .navbar-dark .navbar-nav .hide {
+        display: list-item;
+    }
+}
 
 
 @media (min-width: 992px){
@@ -45,6 +52,8 @@ font-family: "Inter", sans-serif;
         display: none;
     }
     
+    
+
     main{
         margin-left: var(--offcanvas-width);
     }

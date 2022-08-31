@@ -24,16 +24,16 @@ def login():
             flash('Please check your login details and try again')
             return redirect(url_for('auth.login'))
 
-        # login_user(user)
+        login_user(user)
         return redirect(url_for('main.dashboard'))# if pass the check then  have credentials 
 
     return render_template('public/login.html')
 
     
 @auth.route("/logout")
-# @login_required
+@login_required
 def logout():
-    # logout_user()
+    logout_user()
     return redirect(url_for('main.index'))
 
 @auth.route('/signup', methods=['GET', 'POST'])

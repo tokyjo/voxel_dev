@@ -45,6 +45,7 @@ def tutorial():
 
 
 @main.route("/dashboard")
+@login_required
 def dashboard():
     return render_template("admin/dashboard.html")
 

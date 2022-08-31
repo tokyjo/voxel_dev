@@ -1,4 +1,4 @@
-var intervalID = setInterval(update_values,2000);
+var intervalID = setInterval(update_values,20000);
 
 var temp, date, energy; 
 var EnergyChart;
@@ -21,8 +21,8 @@ var data_temp = {
     labels: [],
     datasets: [{
       label: 'temperatures',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(6, 120, 152)',
+      borderColor: 'rgb(6, 120, 152)',
       data: [],
     }]
 };
@@ -31,8 +31,8 @@ var data_energy = {
     labels: [],
     datasets: [{
       label: 'energy',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(227, 177, 39)',
+      borderColor: 'rgb(227, 177, 39)',
       data: [],
     }]
 };
@@ -73,7 +73,7 @@ function update_values(){
   function(data){
     $('#temperature1').text(data["temp"]);
     $('#temperature2').text(data["temp"]);
-    $('#energy').text(data["power"]);
+    //$('#energy').text(data["power"]);
     $('#power').text(data["power"]);
     $('#date1').text(data["date"]);
     $('#date2').text(data["date"]);
@@ -98,6 +98,7 @@ function addData(chart, label, data) {
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
     });
+    
     chart.update();
     
 };

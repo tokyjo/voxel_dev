@@ -9,25 +9,15 @@
       <a class="navbar-brand fw-bold text-uppercase me-auto" href="#">
           <img src=" {{url_for('static',filename='img/voxel-logo.png')}} " alt="voxel-logo" style ="width: 80px;">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
+      
       <!--display-->
       <div class="collapse navbar-collapse ml-auto mt-2 mt-lg-0" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-2 mb-lg-0 ">
-              <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-person-fill"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end ">
-                  <li><a class="dropdown-item" href="{{url_for('main.profile')}}">Profile</a></li>
-                  <li><a class="dropdown-item" href="{{url_for('auth.login')}}">Log in</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{{url_for('auth.logout')}}">Log out</a></li>
-              </ul>
-              </li>
-          </ul>
-      </div>
+        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto ">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
   </div>
 </nav>
 <!--nav bar-->
